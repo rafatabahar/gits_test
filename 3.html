@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GITS Test 3 - Rafata Baharansyah</title>
+</head>
+<body>
+  Input: <span id="input"></span><br>
+  Result: <span id="result"></span>
+  <script>
+  
+    var input = '{(([])[])[]}'
+    document.getElementById("input").innerHTML = input;
+    
+    var result = balancedBrackets(input);
+    document.getElementById("result").innerHTML = result;
+    
+
+    function balancedBrackets(input){
+      input = input.split(" ").join("");
+      console.log(input);
+      if (input.length % 2 != 0 || input.length == 0 || !isOpening(input[0])) return 'NO';
+
+      var openingStack = [];
+      
+      for (let i = 0; i < input.length; i++) {
+        console.log(openingStack);
+
+        var char = input[i];
+
+        if (isOpening(char)) {
+          openingStack.push(char);
+        }else{
+
+          if (openingStack.length == 0) {
+            return 'NO';
+          }
+
+          if (!isPair(openingStack.pop(), char)) {
+            return 'NO';
+          }
+
+        }
+      }
+
+      return (openingStack.length == 0) ? 'YES' : 'NO';
+      // return 'YES';
+    }
+
+    function isOpening(x){
+      return (x == '{' || x == '(' || x == '[')
+    }
+
+    function isPair(opening, closing) {
+      switch (opening) {
+        case '{':
+          if (closing == '}') {
+            return true;
+          }
+          break;
+        case '(':
+          if (closing == ')') {
+            return true;
+          }
+          break;
+        case '[':
+          if (closing == ']') {
+            return true;
+          }
+          break;
+      }
+
+      return false
+    }
+    
+
+
+  </script>
+</body>
+</html>

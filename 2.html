@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GITS Test 2 - Rafata Baharansyah</title>
+</head>
+<body>
+  Input: <span id="input"></span><br>
+  Result: <span id="result"></span>
+  <script>
+    var input = ["h","e","l","l","o"]
+    document.getElementById("input").innerHTML = input;
+    
+    var result = reverse(input);
+    document.getElementById("result").innerHTML = result;
+
+
+    function reverse(input){
+      if(input.length <= 1){
+        return input;
+      }else {
+        var x = input.pop();
+        return [x, ...reverse(input)]
+      }
+    }
+
+  </script>
+</body>
+</html>

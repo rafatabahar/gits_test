@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GITS Test 1</title>
+</head>
+<body>
+  Input: <span id="input"></span><br>
+  Result: <span id="result"></span>
+  <script>
+  
+  var input = [1,0,0,1,0,1,1]
+  var result = 0;
+
+  var last_position = 0;
+
+  console.time("test");
+  for (let i = 0; i < input.length; i++) {
+    var count = 0;
+
+    if (input[i] == 0 || i <= last_position) continue;
+
+    for (let j = i; j < input.length; j++) {
+      if (input[j] == 1) {
+        count++;
+      }else{
+        last_position = j;
+        break;
+      }
+    }
+
+    if (count > result) result = count;
+  }
+  console.timeEnd("test");
+  
+  console.log(result);
+
+  document.getElementById("input").innerHTML = input;
+  document.getElementById("result").innerHTML = result;
+  </script>
+</body>
+</html>
